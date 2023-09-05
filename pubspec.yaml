@@ -1,13 +1,15 @@
 name: task_scheduler
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/Solemil/task_scheduler
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: ">=3.0.0 <4.0.0"
 
-# dependencies:
-#   path: ^1.8.0
+dependencies:
+  path: ^1.8.0
+  # shared_preferences: ^2.2.1
+  # sqlite3: ^2.1.0
 
 dev_dependencies:
   lints: ^2.0.0

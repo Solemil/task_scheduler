@@ -1,4 +1,4 @@
-import 'package:task_scheduler/task_scheduler.dart';
+import 'package:task_scheduler/scheduler_service.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -6,7 +6,7 @@ void main() {
     late Scheduler scheduler;
 
     setUp(() {
-      scheduler = Scheduler();
+      scheduler = Scheduler.notPersistent();
     });
 
     test('scheduled task should executed after 2 seconds', () async {
@@ -16,7 +16,9 @@ void main() {
         executed = true;
       }
 
-      scheduler.schedule(const Duration(seconds: 2), setExecuted);
+      scheduler.scheduleByDuration(const Duration(seconds: 2), setExecuted);
+
+      expect(executed, isFalse);
 
       await Future.delayed(const Duration(seconds: 3));
 
@@ -44,7 +46,7 @@ void main() {
         counter++;
       }
 
-      scheduler.schedulePeriodic(const Duration(seconds: 2), setCounter, 3);
+      scheduler.schedulePeriodic(const Duration(seconds: 2), setCounter, count: 3);
 
       await Future.delayed(const Duration(seconds: 7));
 
